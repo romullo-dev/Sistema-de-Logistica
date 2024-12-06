@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoBank - Clientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    
+    <header class="bg-dark text-white text-center py-3">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Banco Digital</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="cliente.html">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contas.html">Contas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="cartoes.html">Cartões</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="transacoes.html">Transações</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="emprestimos.html">Empréstimos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Sair</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container mt-4">
+        <h2>Lista de Clientes</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Histórico de Transações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>João Silva</td>
+                    <td>joao@email.com</td>
+                    <td>(11) 91234-5678</td>
+                    <td><a href="#">Ver Histórico</a></td>
+                </tr>
+                <tr>
+                    <td>Maria Oliveira</td>
+                    <td>maria@email.com</td>
+                    <td>(21) 98765-4321</td>
+                    <td><a href="#">Ver Histórico</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
