@@ -1,40 +1,61 @@
 body {
+    margin: 0;
+    padding: 0;
+}
+.container-fluid {
+    height: 100vh;
+}
+.left-panel {
+    background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fblogdocaminhoneiro.com%2F2024%2F03%2Ftransportes-bertolini-esta-contratando-novos-motoristas-carreteiros%2F&psig=AOvVaw2Qeg4MehsJ85g2Oi378RMV&ust=1733616756947000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOCMxu6vlIoDFQAAAAAdAAAAABAE') no-repeat center center;
+    background-size: cover;
+}
+.right-panel {
+    background-color: #2d3748; /* Cor semelhante ao da imagem */
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-color: #f8f9fa;
-    margin: 0;
 }
-
-.login-container {
-    max-width: 400px;
+.login-box {
+    background-color: #2e3a4a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    max-width: 400px;
 }
-
-.login-container h2 {
+.login-box h2 {
+    color: white;
     margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
+    text-align: center;
 }
-
-.login-container .form-control {
-    margin-bottom: 15px;
+.login-box label {
+    color: white;
 }
-
-.login-container .btn {
-    font-size: 16px;
+.login-box input {
+    background-color: #4a5568;
+    color: white;
+    border: none;
 }
-
-.login-container a {
-    text-decoration: none;
-    color: #007bff;
+.login-box input::placeholder {
+    color: #a0aec0;
 }
-
-.login-container a:hover {
-    text-decoration: underline;
+.btn-primary {
+    background-color: #3182ce;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #2b6cb0;
+}
+footer {
+    color: #a0aec0;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+.recaptcha-box {
+    background-color: #4a5568;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 15px;
 }
