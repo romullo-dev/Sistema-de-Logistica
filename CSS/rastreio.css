@@ -1,0 +1,85 @@
+.logo {
+    height: 85px;
+    width: auto;
+}
+
+.nav-link {
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #00408f;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 10px;
+}
+
+.dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/*Rastreio*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search-container input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+.search-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.search-container button:hover {
+    background-color: #0056b3;
+}
+.search-container input:focus {
+    outline: none;
+    border-color: #0056b3;
+}
+.search-container button:focus {
+    outline: none;
+}
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+}
