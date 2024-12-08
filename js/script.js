@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /*Tela de login*/
 const usuarios = {
     cliente: { email: "joao", senha: "123456", redirecionamento: "cliente/painel.html" },
-    admin: { email: "admin", senha: "123456", redirecionamento: "admin/cliente.html" }
+    admin: { email: "admin", senha: "123456", redirecionamento: "Empresa/painel.html" }
 };
 
 function verificarLogin() {
@@ -22,3 +22,5 @@ function verificarLogin() {
         alert("Usuário ou senha incorretos! Tente novamente.");
     }
 }
+
+

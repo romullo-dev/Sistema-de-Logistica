@@ -6,17 +6,17 @@ body {
     height: 100vh;
 }
 .left-panel {
-    background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fblogdocaminhoneiro.com%2F2024%2F03%2Ftransportes-bertolini-esta-contratando-novos-motoristas-carreteiros%2F&psig=AOvVaw2Qeg4MehsJ85g2Oi378RMV&ust=1733616756947000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOCMxu6vlIoDFQAAAAAdAAAAABAE') no-repeat center center;
+    background: url('/IMG/Caminhao.webp') no-repeat center center;
     background-size: cover;
 }
 .right-panel {
-    background-color: #2d3748; /* Cor semelhante ao da imagem */
+    background-color: #646464; /* Cor semelhante ao da imagem */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .login-box {
-    background-color: #2e3a4a;
+    background-color: #d63d00;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
