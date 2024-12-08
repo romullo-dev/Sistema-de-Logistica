@@ -4,92 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
-    <!-- Link do Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/CSS/painel.css">
+    <title>Rastreamento - Transportadora</title>
+    <link rel="stylesheet" href="/CSS/rastreio.css">
 </head>
 
 <body>
-    <Header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="/IMG/logo.png" alt="Logo" class="logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto align-items-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="../Empresa/rastreio.html">RASTREIO</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="solucoesDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                OPERACIONAL
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="solucoesDropdown">
-                                <li><a class="dropdown-item" href="#">Rotas</a></li>
-                                <li><a class="dropdown-item" href="#">Processos de Ocorrência</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="parceiroDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                CADASTROS
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="parceiroDropdown">
-                                <li><a class="dropdown-item" href="#">CADASTRAR VEÍCULO</a></li>
-                                <li><a class="dropdown-item" href="#">CADASTRAR MOTORISTA</a></li>
-                                <li><a class="dropdown-item" href="#">CADASTRAR FUNCIONÁRIO</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">TRACKING AÉREO</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">GR</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-primary text-white" href="#">SUPORTE AO USUÁRIO</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="idiomaDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="bandeira-brasil.png" alt="Idioma" style="height: 20px; width: auto;">
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="idiomaDropdown">
-                                <li><a class="dropdown-item" href="#">Português</a></li>
-                                <li><a class="dropdown-item" href="#">English</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </Header>
-    <main>
-        <div class="container">
-            <div class="title">
-                <h2>Rastreamento de Encomenda</h2>
-                <p>Insira o código de rastreamento abaixo:</p>
-            </div>
-    
-            <div class="search-container">
-                <input type="text" id="trackingCode" placeholder="Código de rastreamento">
-                <button onclick="trackPackage()">Rastrear</button>
-            </div>
-    
+    <header>
+        <h1>Transportadora DNA</h1>
+    </header>
+    <div class="container">
+        <div class="back-button">
+            <button onclick="goBack()">Voltar</button>
         </div>
-    </main>
-
-    <!-- Scripts do Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/script.js"></script>
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" placeholder="Digite o número de rastreio">
+                <button>Rastrear</button>
+            </div>
+            <div class="tracking-info">
+                <h3>Informações do Pedido</h3>
+                <p><strong>Status:</strong> Em trânsito</p>
+                <p><strong>Previsão de Entrega:</strong> 10/12/2024</p>
+            </div>
+            <ul class="timeline">
+                <li><strong>08/12/2024 - 14:00:</strong> Pedido saiu para entrega.</li>
+                <li><strong>08/12/2024 - 08:00:</strong> Pedido chegou ao centro de distribuição.</li>
+                <li><strong>07/12/2024 - 18:30:</strong> Pedido despachado do armazém.</li>
+                <li><strong>07/12/2024 - 10:00:</strong> Pedido recebido pela transportadora.</li>
+            </ul>
+        </div>
+        <footer>
+            <p>DNA Transportes - Todos os direitos reservados.</p>
+        </footer>
+        <script src="/js/script.js"></script>
 </body>
 
 </html>

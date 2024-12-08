@@ -28,10 +28,13 @@ function trackPackage() {
     const trackingCode = document.getElementById('trackingCode').value;
     if (trackingCode) {
         alert('Buscando informações para o código: ' + trackingCode);
-        // Aqui você pode adicionar a lógica para buscar as informações de rastreamento
     } else {
         alert('Por favor, insira um código de rastreamento válido!');
     }
 }
+/*BOTAO VOLTAR*/
+    function goBack() {
+        window.history.back();
+    }
 
 

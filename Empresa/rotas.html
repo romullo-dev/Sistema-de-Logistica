@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Rotas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #3e84b0;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        #map {
+            height: 300px;
+            margin-top: 20px;
+        }
+        .modal-lg {
+            max-width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gestão de Rotas</h1>
+    </header>
+    <div class="container mt-4">
+        <!-- Filtros -->
+        <div class="d-flex justify-content-between mb-3">
+            <select class="form-select w-25">
+                <option value="">Tipo de Rota</option>
+                <option value="coleta">Coleta</option>
+                <option value="transferencia">Transferência</option>
+                <option value="transbordo">Transbordo</option>
+                <option value="distribuicao">Distribuição</option>
+                <option value="ocorrencia">Ocorrência</option>
+            </select>
+            <input type="text" class="form-control w-50" placeholder="Pesquisar número da rota ou status">
+        </div>
+
+        <!-- Tabela de Rotas -->
+        <table class="table table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>Número</th>
+                    <th>Tipo</th>
+                    <th>Origem</th>
+                    <th>Destino</th>
+                    <th>Status</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="rota-table">
+                <!-- Dados carregados dinamicamente -->
+            </tbody>
+        </table>
+
+        <!-- Botão para adicionar nova rota -->
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#rotaModal">Adicionar Nova Rota</button>
+
+        <!-- Mapa -->
+        <div id="map"></div>
+    </div>
+
+    <footer class="text-center mt-4">
+        <p>Transportadora DNA - Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Modal para Cadastro/Edição de Rota -->
+    <div class="modal fade" id="rotaModal" tabindex="-1" aria-labelledby="rotaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rotaModalLabel">Adicionar/Editar Rota</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="rotaForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="tipoRota" class="form-label">Tipo de Rota</label>
+                                <select id="tipoRota" class="form-select">
+                                    <option value="coleta">Coleta</option>
+                                    <option value="transferencia">Transferência</option>
+                                    <option value="transbordo">Transbordo</option>
+                                    <option value="distribuicao">Distribuição</option>
+                                    <option value="ocorrencia">Ocorrência</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="origem" class="form-label">Origem</label>
+                                <input type="text" id="origem" class="form-control" placeholder="Ex.: São Paulo">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="destino" class="form-label">Destino</label>
+                                <input type="text" id="destino" class="form-control" placeholder="Ex.: Rio de Janeiro">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="data" class="form-label">Data</label>
+                                <input type="date" id="data" class="form-control">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar Rota</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Simulação de API -->
+    <script>
+        const mockData = [
+            { numero: 12345, tipo: "Coleta", origem: "São Paulo", destino: "Rio de Janeiro", status: "Em andamento", data: "2024-12-08" },
+            { numero: 12346, tipo: "Distribuição", origem: "Rio de Janeiro", destino: "Cliente XYZ", status: "Finalizada", data: "2024-12-07" }
+        ];
+
+        function carregarTabela() {
+            const tabela = document.getElementById("rota-table");
+            tabela.innerHTML = "";
+            mockData.forEach(rota => {
+                tabela.innerHTML += `
+                    <tr>
+                        <td>${rota.numero}</td>
+                        <td>${rota.tipo}</td>
+                        <td>${rota.origem}</td>
+                        <td>${rota.destino}</td>
+                        <td>${rota.status}</td>
+                        <td>${rota.data}</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm">Editar</button>
+                            <button class="btn btn-danger btn-sm">Encerrar</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // Inicializar Mapa
+        function inicializarMapa() {
+            const map = L.map('map').setView([-23.5505, -46.6333], 10);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19
+            }).addTo(map);
+        }
+
+        // Carregar ao inicializar
+        document.addEventListener("DOMContentLoaded", () => {
+            carregarTabela();
+            inicializarMapa();
+        });
+    </script>
+</body>
+</html>
