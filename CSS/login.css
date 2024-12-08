@@ -6,7 +6,7 @@ body {
     height: 100vh;
 }
 .left-panel {
-    background: url('/IMG/caminhao.jpg') no-repeat center center;
+    background: url('../IMG/caminhao.jpg') no-repeat center center;
     background-size: cover;
 }
 .right-panel {
