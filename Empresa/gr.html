@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Romaneio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #3e84b0;
+            border-bottom: 2px solid #3e4754;
+            padding: 15px 0;
+            text-align: center;
+        }
+        header h1 {
+            color: #f2f2f2;
+        }
+        .container {
+            margin-top: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .btn-primary {
+            background-color: #3e84b0;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #3e4754;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cadastro de GR</h1>
+    </header>
+
+    <div class="container">
+        <form id="romaneioForm" class="row g-3">
+            <!-- Nome Completo -->
+            <div class="col-md-6">
+                <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                <input type="text" id="nomeCompleto" class="form-control" placeholder="Informe o nome completo" required>
+            </div>
+            <!-- Placa -->
+            <div class="col-md-6">
+                <label for="placaVeiculo" class="form-label">Placa do Veículo</label>
+                <input type="text" id="placaVeiculo" class="form-control" placeholder="Exemplo: ABC-1234" required>
+            </div>
+            <!-- Data de Início -->
+            <div class="col-md-6">
+                <label for="dataInicio" class="form-label">Data de Início</label>
+                <input type="date" id="dataInicio" class="form-control" required>
+            </div>
+            <!-- Valor do Romaneio -->
+            <div class="col-md-6">
+                <label for="valorRomaneio" class="form-label">Valor do Romaneio (R$)</label>
+                <input type="number" step="0.01" id="valorRomaneio" class="form-control" placeholder="Informe o valor" required>
+            </div>
+            <!-- Gerenciar Risco -->
+            <div class="col-md-6">
+                <label for="gerenciarRisco" class="form-label">Gerenciar Risco</label>
+                <select id="gerenciarRisco" class="form-select" required>
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="krona">Krona</option>
+                    <option value="upper">Upper</option>
+                </select>
+            </div>
+            <!-- KM Inicial -->
+            <div class="col-md-6">
+                <label for="kmInicial" class="form-label">KM Inicial</label>
+                <input type="number" id="kmInicial" class="form-control" placeholder="Informe o KM inicial" required>
+            </div>
+            <!-- KM Final -->
+            <div class="col-md-6">
+                <label for="kmFinal" class="form-label">KM Final</label>
+                <input type="number" id="kmFinal" class="form-control" placeholder="Informe o KM final" required>
+            </div>
+            <!-- Botão de Cadastro -->
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary px-5">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+
+    <footer class="text-center mt-4">
+        <p>Transportadora - Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script de Validação -->
+    <script>
+        document.getElementById("romaneioForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Previne envio padrão do formulário
+
+            const nome = document.getElementById("nomeCompleto").value.trim();
+            const placa = document.getElementById("placaVeiculo").value.trim();
+            const data = document.getElementById("dataInicio").value;
+            const valor = document.getElementById("valorRomaneio").value.trim();
+            const risco = document.getElementById("gerenciarRisco").value;
+            const kmInicial = document.getElementById("kmInicial").value.trim();
+            const kmFinal = document.getElementById("kmFinal").value.trim();
+
+            if (nome && placa && data && valor && risco && kmInicial && kmFinal) {
+                alert("Romaneio cadastrado com sucesso!");
+                // Aqui pode ser implementada a lógica para enviar os dados ao backend
+            } else {
+                alert("Por favor, preencha todos os campos.");
+            }
+        });
+    </script>
+</body>
+</html>
