@@ -4,46 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rastrear Encomenda</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
-        header {
-            background-color: #3e84b0;
-            border-bottom: 2px solid #f2f2f2;
-            padding: 15px 0;
-            text-align: center;
-        }
-        header h1 {
-            color: #f2f6f9;
-        }
-        .container {
-            margin-top: 30px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-        .btn-orange {
-            background-color: #3e84b0;
-            color: white;
-            border: none;
-        }
-        .btn-orange:hover {
-            background-color: #3e84b0;
-        }
-        .help-link {
-            font-size: 0.9rem;
-            text-decoration: none;
-            color: #007bff;
-        }
-        .help-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="/CSS/aereos.css">
 </head>
 <body>
     <header>
@@ -53,7 +15,6 @@
     <div class="container">
         <p class="text-center mb-4">Busque pelo código de rastreamento ou nota fiscal</p>
         <form id="rastreioForm" class="row g-3">
-            <!-- Tipo de Busca -->
             <div class="col-md-6">
                 <label for="tipoBusca" class="form-label">Tipo de Busca</label>
                 <select id="tipoBusca" class="form-select" required>
@@ -61,12 +22,10 @@
                     <option value="notaFiscal">Nota fiscal</option>
                 </select>
             </div>
-            <!-- Código de Rastreamento -->
             <div class="col-md-6">
                 <label for="codigoRastreamento" class="form-label">Código de Rastreamento</label>
                 <input type="text" id="codigoRastreamento" class="form-control" placeholder="Informe os números" required>
             </div>
-            <!-- Botão de Rastreamento -->
             <div class="col-12 text-center">
                 <button type="submit" class="btn btn-orange px-5">Rastrear</button>
             </div>
@@ -78,19 +37,16 @@
         <p>Transportadora DNA - Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Script de Submissão -->
     <script>
         document.getElementById("rastreioForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Previne envio padrão do formulário
+            event.preventDefault();
 
             const tipoBusca = document.getElementById("tipoBusca").value;
             const codigo = document.getElementById("codigoRastreamento").value.trim();
 
             if (codigo) {
                 alert(`Rastreando pelo ${tipoBusca === "codigo" ? "código" : "nota fiscal"}: ${codigo}`);
-                // Adicione aqui a lógica para conectar ao backend ou API
             } else {
                 alert("Por favor, informe o código de rastreamento.");
             }

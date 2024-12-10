@@ -1,0 +1,16 @@
+body {
+    background-color: #f8f9fa;
+}
+header {
+    background-color: #3e84b0;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+#map {
+    height: 300px;
+    margin-top: 20px;
+}
+.modal-lg {
+    max-width: 90%;
+}

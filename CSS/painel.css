@@ -7,6 +7,10 @@
     font-weight: bold;
 }
 
+header {
+    background-color:#3e84b0;
+}
+
 .nav-link:hover {
     color: #007bff;
     text-decoration: underline;
@@ -36,7 +40,7 @@
 /*CARROSSEL*/
 
 .custom-carousel {
-    height: 580px; /* Altura total do carrossel */
+    height: 580px; 
 }
 
 .custom-carousel .carousel-inner {
@@ -44,8 +48,8 @@
 }
 
 .custom-carousel .carousel-item img.custom-image {
-    height: 100%; /* Faz as imagens ocuparem toda a altura */
-    object-fit: cover; /* Faz com que a imagem se ajuste sem distorcer */
+    height: 100%; 
+    object-fit: cover;
 }
 
 

@@ -1,0 +1,27 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+header {
+    background-color: #3e84b0;
+    border-bottom: 2px solid #3e4754;
+    padding: 15px 0;
+    text-align: center;
+}
+header h1 {
+    color: #f2f2f2;
+}
+.container {
+    margin-top: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.btn-primary {
+    background-color: #3e84b0;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #3e4754;
+}

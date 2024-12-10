@@ -1,4 +1,3 @@
-/* Reset básico */
 body {
     margin: 0;
     padding: 0;
@@ -6,17 +5,15 @@ body {
 }
 
 .container-fluid {
-    height: 100vh; /* Preenche 100% da tela */
+    height: 100vh; 
 }
 
-/* Painel esquerdo: imagem sem blur */
 .left-panel {
     background: url('../IMG/caminhao.jpeg') no-repeat center center;
     background-size: cover;
     position: relative;
 }
 
-/* Degradê escuro sobre a imagem */
 .left-panel::after {
     content: '';
     position: absolute;
@@ -27,7 +24,6 @@ body {
     background: linear-gradient(to right, rgba(62, 71, 84, 0.9), rgba(62, 71, 84, 0.5));
 }
 
-/* Painel direito */
 .right-panel {
     background-color: #303a4a;
     display: flex;
@@ -35,18 +31,16 @@ body {
     justify-content: center;
 }
 
-/* Caixa de login */
 .login-box {
-    background: linear-gradient(to bottom, #3e84b0, #3e4754); /* Efeito de gradiente */
+    background: linear-gradient(to bottom, #3e84b0, #3e4754); 
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
     width: 100%;
     max-width: 400px;
-    animation: fadeIn 1s ease; /* Animação de entrada */
+    animation: fadeIn 1s ease; 
 }
 
-/* Estilo dos textos */
 .login-box h2 {
     color: white;
     margin-bottom: 20px;
@@ -57,7 +51,6 @@ body {
     color: white;
 }
 
-/* Campos de entrada */
 .login-box input {
     background-color: #4a5568;
     color: white;
@@ -88,6 +81,10 @@ footer {
     font-size: 14px;
     text-align: center;
     margin-top: 10px;
+}
+
+.custom-header {
+    background-color: #ff5733; /* Substitua pela cor desejada */
 }
 
 @keyframes fadeIn {

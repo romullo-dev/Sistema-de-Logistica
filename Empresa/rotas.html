@@ -4,35 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Rotas</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        header {
-            background-color: #3e84b0;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-        #map {
-            height: 300px;
-            margin-top: 20px;
-        }
-        .modal-lg {
-            max-width: 90%;
-        }
-    </style>
+    <link rel="stylesheet" href="/CSS/rotas.css">
+ 
 </head>
 <body>
     <header>
         <h1>Gestão de Rotas</h1>
     </header>
     <div class="container mt-4">
-        <!-- Filtros -->
         <div class="d-flex justify-content-between mb-3">
             <select class="form-select w-25">
                 <option value="">Tipo de Rota</option>
@@ -45,7 +26,6 @@
             <input type="text" class="form-control w-50" placeholder="Pesquisar número da rota ou status">
         </div>
 
-        <!-- Tabela de Rotas -->
         <table class="table table-striped">
             <thead class="table-primary">
                 <tr>
@@ -59,14 +39,11 @@
                 </tr>
             </thead>
             <tbody id="rota-table">
-                <!-- Dados carregados dinamicamente -->
             </tbody>
         </table>
 
-        <!-- Botão para adicionar nova rota -->
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#rotaModal">Adicionar Nova Rota</button>
 
-        <!-- Mapa -->
         <div id="map"></div>
     </div>
 
@@ -74,7 +51,6 @@
         <p>Transportadora DNA - Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Modal para Cadastro/Edição de Rota -->
     <div class="modal fade" id="rotaModal" tabindex="-1" aria-labelledby="rotaModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -115,11 +91,9 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <!-- Simulação de API -->
+    <script src="js/script.js"></script>
     <script>
         const mockData = [
             { numero: 12345, tipo: "Coleta", origem: "São Paulo", destino: "Rio de Janeiro", status: "Em andamento", data: "2024-12-08" },
@@ -147,7 +121,6 @@
             });
         }
 
-        // Inicializar Mapa
         function inicializarMapa() {
             const map = L.map('map').setView([-23.5505, -46.6333], 10);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -155,7 +128,6 @@
             }).addTo(map);
         }
 
-        // Carregar ao inicializar
         document.addEventListener("DOMContentLoaded", () => {
             carregarTabela();
             inicializarMapa();
