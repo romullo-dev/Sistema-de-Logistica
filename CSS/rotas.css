@@ -14,3 +14,13 @@ header {
 .modal-lg {
     max-width: 90%;
 }
+.back-button button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #f4f4f4;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
