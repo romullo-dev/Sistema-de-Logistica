@@ -1,6 +1,6 @@
 /*Tela de login*/
 const usuarios = {
-    cliente: { email: "cliente", senha: "123456", redirecionamento: "cliente/painel.html" },
+    cliente: { email: "FRANCA.DNA", senha: "123456", redirecionamento: "cliente/painel.html" },
     admin: { email: "ROMULO.DNA", senha: "123456", redirecionamento: "Empresa/painel.html" }
 };
 

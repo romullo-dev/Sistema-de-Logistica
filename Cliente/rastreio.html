@@ -1,34 +1,225 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rastreamento - Transportadora</title>
-    <link rel="stylesheet" href="../CSS/rastreio.css">
+    <title>Painel do Cliente - Rastreio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .custom-header {
+            background: linear-gradient(to right, #003f6f, #0070a6);
+            color: white;
+        }
+
+        .custom-header .navbar-nav .nav-link {
+            color: white;
+        }
+
+        .custom-header .navbar-nav .nav-link:hover {
+            color: #f8c117;
+        }
+
+        .rastreio-container {
+            margin-top: 100px;
+        }
+
+        .rastreio-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .rastreio-card h5 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .btn-custom {
+            background-color: #003f6f;
+            color: white;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #0070a6;
+        }
+
+        .map-container {
+            height: 400px;
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #003f6f;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: #f8c117;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #e5b00d;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            width: 250px;
+            padding: 8px;
+        }
+
+        .search-bar button {
+            padding: 8px 15px;
+            background-color: #003f6f;
+            color: white;
+            border: none;
+        }
+
+        .tracking-info h3 {
+            margin-bottom: 20px;
+        }
+
+        .timeline li {
+            margin-bottom: 10px;
+        }
+
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+    </style>
 </head>
+
 <body>
-    <header>
-        <h1>Transportadora DNA</h1>
+
+    <header class="custom-header fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="painel.html">
+                    <img src="../IMG/logo.png" alt="Logo" style="width: 70px;">
+                </a>
+               
     </header>
-    <div class="container">
-        <div class="search-bar">
-            <input type="text" placeholder="Digite o número de rastreio">
-            <button>Rastrear</button>
+
+    <main class="rastreio-container container mt-5 pt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="rastreio-card">
+                    <h5>Rastreie Seu Pedido</h5>
+                    <p>Insira o código de rastreio abaixo para visualizar a localização do seu pedido.</p>
+                    <div class="search-bar">
+                        <input type="text" id="codigo-rastreio-input" placeholder="Digite o número de rastreio">
+                        <button id="rastrear-btn">Rastrear</button>
+                    </div>
+                    <div class="tracking-info" id="tracking-info">
+                        <h3>Informações do Pedido</h3>
+                    </div>
+                    <ul class="timeline" id="timeline">
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6 right-column">
+                <div class="rastreio-card">
+                    <h5>Localização do Pedido</h5>
+                    <p>Veja no mapa onde está o seu pedido.</p>
+                    <div id="map" class="map-container"></div>
+                </div>
+            </div>
         </div>
-        <div class="tracking-info">
-            <h3>Informações do Pedido</h3>
-            <p><strong>Status:</strong> Em trânsito</p>
-            <p><strong>Previsão de Entrega:</strong> 10/12/2024</p>
-        </div>
-        <ul class="timeline">
-            <li><strong>08/12/2024 - 14:00:</strong> Pedido saiu para entrega.</li>
-            <li><strong>08/12/2024 - 08:00:</strong> Pedido chegou ao centro de distribuição.</li>
-            <li><strong>07/12/2024 - 18:30:</strong> Pedido despachado do armazém.</li>
-            <li><strong>07/12/2024 - 10:00:</strong> Pedido recebido pela transportadora.</li>
-        </ul>
-    </div>
+    </main>
+
     <footer>
-        <p>DNA Transportes - Todos os direitos reservados.</p>
+        <div class="container">
+            <p>© 2024 Sua Empresa | Todos os direitos reservados</p>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+        </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        function updateTrackingInfo(rastreioCode) {
+            let trackingData = {};
+
+            if (rastreioCode === "123456") {
+                trackingData = {
+                    status: "Em trânsito",
+                    deliveryDate: "10/12/2024",
+                    timeline: [
+                        { date: "08/12/2024 - 14:00", description: "Pedido saiu para entrega." },
+                        { date: "08/12/2024 - 08:00", description: "Pedido chegou ao centro de distribuição." },
+                        { date: "07/12/2024 - 18:30", description: "Pedido despachado do armazém." },
+                        { date: "07/12/2024 - 10:00", description: "Pedido recebido pela transportadora." }
+                    ]
+                };
+            } else {
+                trackingData = {
+                    status: "Código de rastreio inválido",
+                    deliveryDate: "",
+                    timeline: []
+                };
+            }
+
+            const trackingInfoContainer = document.getElementById("tracking-info");
+            trackingInfoContainer.innerHTML = `
+                <p><strong>Status:</strong> ${trackingData.status}</p>
+                ${trackingData.deliveryDate ? `<p><strong>Previsão de Entrega:</strong> ${trackingData.deliveryDate}</p>` : ""}
+            `;
+
+            const timelineContainer = document.getElementById("timeline");
+            timelineContainer.innerHTML = ''; 
+            trackingData.timeline.forEach(event => {
+                const li = document.createElement("li");
+                li.innerHTML = `<strong>${event.date}:</strong> ${event.description}`;
+                timelineContainer.appendChild(li);
+            });
+        }
+
+        document.getElementById("rastrear-btn").addEventListener("click", function () {
+            const rastreioCode = document.getElementById("codigo-rastreio-input").value;
+            if (rastreioCode.trim()) {
+                updateTrackingInfo(rastreioCode);
+            } else {
+                alert("Por favor, insira um código de rastreio.");
+            }
+        });
+
+        var map = L.map('map').setView([-23.5505, -46.6333], 13); 
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([-23.5505, -46.6333]).addTo(map)  
+            .bindPopup("Localização do Pedido")
+            .openPopup();
+    </script>
+
 </body>
+
 </html>
